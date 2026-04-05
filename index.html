@@ -10,9 +10,7 @@
         :root {
             --bg-dark: #0a0e1a;
             --bg-card: #141824;
-            --bg-hover: #1c2230;
             --accent: #ff6b35;
-            --accent-hover: #ff8555;
             --text-primary: #ffffff;
             --text-secondary: #8b92a8;
             --border: #2a3040;
@@ -73,17 +71,6 @@
             color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto 2rem;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
         }
         
         .deals-container {
@@ -156,6 +143,12 @@
             text-decoration: none;
             font-weight: 700;
             margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .book-btn:hover {
+            background: #ff8555;
         }
         
         .tier-badge {
@@ -171,6 +164,42 @@
         .tier-gold { background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); color: #1a1a1a; }
         .tier-platinum { background: linear-gradient(135deg, #e0e0e0 0%, #b9f2ff 50%, #c0c0c0 100%); color: #1a1a1a; }
         .tier-silver { background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%); color: #1a1a1a; }
+        
+        .search-box {
+            background: rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--bg-dark);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .search-box button {
+            width: 100%;
+            margin-top: 0.5rem;
+            padding: 0.75rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        
+        .note {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            text-align: center;
+        }
         
         .footer {
             background: var(--bg-card);
@@ -192,14 +221,14 @@
     <section class="hero">
         <h1>More Bang For Your Buck</h1>
         <p>Skip the resort. Book the adventure. Curated experience bundles from $449.</p>
-        <a href="#deals" class="cta-button">Explore Deals →</a>
     </section>
     
-    <div id="deals" class="deals-container">
+    <div class="deals-container">
         <div class="deals-grid">
+            
             <!-- Hawaii -->
             <div class="deal-card">
-                <video class="deal-video" autoplay muted loop playsinline poster="🌺">
+                <video class="deal-video" autoplay muted loop playsinline>
                     <source src="https://pfst.cf2.poecdn.net/base/video/3683a2aadad110a6319e472a9382d585672ec3219f9c6fc98853013ebaf60adf" type="video/mp4">
                 </video>
                 <div class="deal-content">
@@ -210,13 +239,20 @@
                         <span class="deal-price">$899</span>
                         <span class="deal-was">$1599</span>
                     </div>
-                    <a href="https://www.viator.com/search-results?text=Hawaii&pid=P28353" class="book-btn">View Deal →</a>
+                    <div class="search-box">
+                        <form action="https://www.viator.com/search-results" method="GET" target="_blank">
+                            <input type="hidden" name="pid" value="28353">
+                            <input type="hidden" name="text" value="Hawaii">
+                            <button type="submit">Search Hawaii Deals →</button>
+                        </form>
+                    </div>
+                    <p class="note">Partner ID 28353 tracked automatically</p>
                 </div>
             </div>
             
             <!-- Aspen -->
             <div class="deal-card">
-                <video class="deal-video" autoplay muted loop playsinline poster="🏔️">
+                <video class="deal-video" autoplay muted loop playsinline>
                     <source src="https://pfst.cf2.poecdn.net/base/video/9499fb71b612447d41499b265ae6397587369a27bc51d0d72ba756846e2320f1" type="video/mp4">
                 </video>
                 <div class="deal-content">
@@ -227,14 +263,21 @@
                         <span class="deal-price">$1299</span>
                         <span class="deal-was">$2399</span>
                     </div>
-                    <a href="https://www.viator.com/search-results?text=Aspen&pid=P28353" class="book-btn">View Deal →</a>
+                    <div class="search-box">
+                        <form action="https://www.viator.com/search-results" method="GET" target="_blank">
+                            <input type="hidden" name="pid" value="28353">
+                            <input type="hidden" name="text" value="Aspen">
+                            <button type="submit">Search Aspen Deals →</button>
+                        </form>
+                    </div>
+                    <p class="note">Partner ID 28353 tracked automatically</p>
                 </div>
             </div>
             
             <!-- Nashville -->
             <div class="deal-card">
-                <video class="deal-video" autoplay muted loop playsinline poster="🎸">
-                    <source src="https://pfst.cf2.poecdn.net/base/video/f2794d9beff1d5918e5abd4929844b9eb9b622bd503a6b911a18da3e74a16434" type="video/mp4">
+                <video class="deal-video" autoplay muted loop playsinline>
+                    <source src="https://pfst.cf2.poecdn.net/base/video/2f4a87c1418d26d63c4dc86d98887c49167bd737534fd9fa3b6083c392da601b" type="video/mp4">
                 </video>
                 <div class="deal-content">
                     <span class="tier-badge tier-silver">Silver</span>
@@ -244,7 +287,14 @@
                         <span class="deal-price">$499</span>
                         <span class="deal-was">$899</span>
                     </div>
-                    <a href="https://www.viator.com/search-results?text=Nashville&pid=P28353" class="book-btn">View Deal →</a>
+                    <div class="search-box">
+                        <form action="https://www.viator.com/search-results" method="GET" target="_blank">
+                            <input type="hidden" name="pid" value="28353">
+                            <input type="hidden" name="text" value="Nashville">
+                            <button type="submit">Search Nashville Deals →</button>
+                        </form>
+                    </div>
+                    <p class="note">Partner ID 28353 tracked automatically</p>
                 </div>
             </div>
         </div>
@@ -255,6 +305,4 @@
         <p style="margin-top: 0.5rem; font-size: 0.8rem;">© 2026 Experience Steals | Partner ID: 28353</p>
     </footer>
 </body>
-</html>
-y>
 </html>
