@@ -3,27 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience Steals | Curated Adventure Deals</title>
+    <title>Experience Steals | Adventure Deals</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-dark: #0a0e1a;
+            --bg-card: #141824;
+            --bg-hover: #1c2230;
+            --accent: #ff6b35;
+            --accent-hover: #ff8555;
+            --text-primary: #ffffff;
+            --text-secondary: #8b92a8;
+            --border: #2a3040;
+            --success: #00d084;
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #fafafa;
-            color: #1a1a1a;
+            background: var(--bg-dark);
+            color: var(--text-primary);
             line-height: 1.6;
         }
         
         .header {
-            background: #fff;
-            border-bottom: 1px solid #e5e5e5;
-            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, #0d1220 0%, #1a1f2e 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
         }
         
         .header-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -31,88 +44,52 @@
         }
         
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 800;
-            color: #1a1a1a;
+            color: var(--text-primary);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
         
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #0d1220 0%, #1e2538 50%, #0d1220 100%);
+            padding: 5rem 2rem;
             text-align: center;
         }
         
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, #a0a8c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .hero p {
-            font-size: 1.2rem;
-            opacity: 0.95;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto 2rem;
         }
         
-        .trust-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255,255,255,0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-        }
-        
-        .tier-section {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-        }
-        
-        .tier-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid;
-        }
-        
-        .tier-badge {
-            padding: 0.5rem 1rem;
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
             border-radius: 8px;
+            text-decoration: none;
             font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 1.1rem;
         }
         
-        .tier-title { font-size: 1.5rem; font-weight: 700; }
-        .tier-price-range { margin-left: auto; font-size: 1.1rem; font-weight: 600; color: #666; }
-        
-        .platinum .tier-header { border-color: #b9f2ff; }
-        .platinum .tier-badge {
-            background: linear-gradient(135deg, #e0e0e0 0%, #b9f2ff 50%, #ffffff 100%);
-            color: #1a1a1a;
-        }
-        
-        .gold .tier-header { border-color: #ffd700; }
-        .gold .tier-badge {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            color: #1a1a1a;
-        }
-        
-        .silver .tier-header { border-color: #c0c0c0; }
-        .silver .tier-badge {
-            background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%);
-            color: #1a1a1a;
+        .deals-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
         }
         
         .deals-grid {
@@ -122,490 +99,91 @@
         }
         
         .deal-card {
-            background: #fff;
+            background: var(--bg-card);
             border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #e5e5e5;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
         }
         
         .deal-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+            border-color: var(--accent);
         }
         
-        .deal-image {
-            width: 100%;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            position: relative;
-        }
-        
-        .platinum .deal-image {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .gold .deal-image {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-        
-        .silver .deal-image {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-        
-        .tier-tag {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            padding: 0.35rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
+        .deal-location {
+            font-size: 1.5rem;
             font-weight: 700;
-            text-transform: uppercase;
         }
         
-        .platinum .tier-tag { background: #b9f2ff; color: #1a1a1a; }
-        .gold .tier-tag { background: #ffd700; color: #1a1a1a; }
-        .silver .tier-tag { background: #c0c0c0; color: #1a1a1a; }
-        
-        .deal-content { padding: 1.5rem; }
-        .deal-location { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.25rem; }
-        .deal-country { color: #666; font-size: 0.9rem; margin-bottom: 0.75rem; }
-        
-        .deal-experience {
-            background: #f5f5f5;
-            padding: 0.75rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            color: #444;
+        .deal-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--success);
         }
         
-        .deal-experience strong {
-            color: #1a1a1a;
-        }
-        
-        .deal-price-row {
-            display: flex;
-            align-items: baseline;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-        
-        .deal-price { font-size: 1.75rem; font-weight: 800; }
-        .platinum .deal-price { color: #667eea; }
-        .gold .deal-price { color: #f5576c; }
-        .silver .deal-price { color: #00a8e8; }
-        
-        .deal-was {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 1rem;
-        }
-        
-        .deal-features {
-            list-style: none;
-            margin-bottom: 1.25rem;
-            font-size: 0.85rem;
-        }
-        
-        .deal-features li {
-            padding: 0.2rem 0;
-            color: #555;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .deal-features li::before {
-            content: "✓";
-            color: #2ed573;
-            font-weight: bold;
-        }
-        
-        .cta-button {
+        .book-btn {
             display: block;
-            width: 100%;
-            padding: 0.875rem;
+            background: var(--accent);
+            color: white;
+            padding: 1rem;
             border-radius: 10px;
             text-align: center;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-            color: white;
-        }
-        
-        .platinum .cta-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .gold .cta-button {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-        
-        .silver .cta-button {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-        
-        .cta-button:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        
-        .footer {
-            background: #1a1a1a;
-            color: #888;
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-        }
-        
-        .footer p { max-width: 600px; margin: 0 auto; font-size: 0.9rem; }
-        
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.75rem; }
-            .deals-grid { grid-template-columns: 1fr; }
-            .tier-header { flex-wrap: wrap; }
-            .tier-price-range { margin-left: 0; width: 100%; margin-top: 0.5rem; }
+            margin-top: 1rem;
         }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="header-content">
-            <a href="#" class="logo">
-                <span>🎒</span>
-                <span>Experience Steals</span>
-            </a>
+            <a href="#" class="logo">✈️ Experience Steals</a>
         </div>
     </header>
     
     <section class="hero">
-        <h1>Skip the resort. Live the adventure.</h1>
-        <p>I hunt down guided tours, cultural experiences, and once-in-a-lifetime activities. From $100 local cooking classes to $7K+ expedition tours.</p>
-        <div class="trust-badge">
-            <span>✓</span> Viator experiences, verified daily
-        </div>
+        <h1>More Bang For Your Buck</h1>
+        <p>Skip the resort. Book the adventure. Curated experience bundles from $449.</p>
+        <a href="#deals" class="cta-button">Explore Deals →</a>
     </section>
     
-    <!-- PLATINUM TIER -->
-    <section class="tier-section platinum" id="platinum">
-        <div class="tier-header">
-            <span class="tier-badge">Platinum</span>
-            <h2 class="tier-title">Expedition Experiences</h2>
-            <span class="tier-price-range">$1,000 — $3,000+</span>
-        </div>
-        
+    <div id="deals" class="deals-container">
         <div class="deals-grid">
-            <article class="deal-card">
-                <div class="deal-image">
-                    🗾
-                    <span class="tier-tag">Platinum</span>
-                </div>
-                <div class="deal-content">
-                    <h3 class="deal-location">Japan Cultural Immersion</h3>
-                    <p class="deal-country">Tokyo & Kyoto, Japan</p>
-                    <div class="deal-experience">
-                        <strong>Includes:</strong> Tea ceremony, sushi-making class, bullet train to Mt. Fuji, samurai sword experience
-                    </div>
-                    <div class="deal-price-row">
-                        <span class="deal-price">$1,899</span>
-                        <span class="deal-was">$3,200</span>
-                    </div>
-                    <ul class="deal-features">
-                        <li>7 nights accommodation</li>
-                        <li>Guided cultural experiences</li>
-                        <li>JR Pass included</li>
-                        <li>Local expert guides</li>
-                    </ul>
-                    <a href="https://www.viator.com/searchResults/all?destination=Tokyo&amp;mcid=28353" class="cta-button">View Deal →</a>
-                </div>
-            </article>
+            <div class="deal-card">
+                <div class="deal-location">🌺 Hawaii</div>
+                <div class="deal-price">$899</div>
+                <a href="https://www.viator.com/Hawaii/d230" class="book-btn">View Deal →</a>
+            </div>
             
-            <article class="deal-card">
-                <div class="deal-image">
-                    🏛️
-                    <span class="tier-tag">Platinum</span>
-                </div>
-                <div class="deal-content">
-                    <h3 class="deal-location">Egypt Ancient Wonders</h3>
-                    <p class="deal-country">Cairo & Luxor, Egypt</p>
-                    <div class="deal-experience">
-                        <strong>Includes:</strong> Private pyramid sunrise tour, Nile felucca sail, hot air balloon over temples, Egyptologist guide
-                    </div>
-                    <div class="deal-price-row">
-                        <span class="deal-price">$1,299</span>
-                        <span class="deal-was">$2,400</span>
-                    </div>
-                    <ul class="deal-features">
-                        <li>7 nights boutique hotels</li>
-                        <li>Private Egyptologist guide</li>
-                        <li>Hot air balloon ride</li>
-                        <li>All entrance fees</li>
-                    </ul>
-                    <a href="https://www.viator.com/searchResults/all?destination=Cairo&amp;mcid=28353" class="cta-button">View Deal →</a>
-                </div>
-            </article>
+            <div class="deal-card">
+                <div class="deal-location">🏔️ Aspen</div>
+                <div class="deal-price">$1299</div>
+                <a href="https://www.viator.com/Aspen/d48938" class="book-btn">View Deal →</a>
+            </div>
             
-            <article class="deal-card">
-                <div class="deal-image">
-                    ⛰️
-                    <span class="tier-tag">Platinum</span>
-                </div>
-                <div class="deal-content">
-                    <h3 class="deal-location">Machu Picchu Trek</h3>
-                    <p class="deal-country">Cusco, Peru</p>
-                    <div class="deal-experience">
-                        <strong>Includes:</strong> Inca Trail 4-day trek, Rainbow Mountain hike, Sacred Valley ATV, weaving workshop
-                    </div>
-                    <div class="deal-price-row">
-                        <span class="deal-price">$1,099</span>
-                        <span class="deal-was">$1,999</span>
-                    </div>
-                    <ul class="deal-features">
-                        <li>4-day Inca Trail trek</li>
-                        <li>Professional guides & porters</li>
-                        <li>All camping gear provided</li>
-                        <li>Machu Picchu entrance</li>
-                    </ul>
-                    <a href="https://www.viator.com/searchResults/all?destination=Cusco&amp;mcid=28353" class="cta-button">View Deal →</a>
-                </div>
-            </article>
+            <div class="deal-card">
+                <div class="deal-location">🎸 Nashville</div>
+                <div class="deal-price">$499</div>
+                <a href="https://www.viator.com/Nashville/d4961" class="book-btn">View Deal →</a>
+            </div>
             
-            <article class="deal-card">
-                <div class="deal-image">
-                    🌌
-                    <span class="tier-tag">Platinum</span>
-                </div>
-                <div class="deal-content">
-                    <h3 class="deal-location">Iceland Northern Lights</h3>
-                    <p class="deal-country">Reykjavik, Iceland</p>
-                    <div class="deal-experience">
-                        <strong>Includes:</strong> Aurora chase by jeep, glacier hiking, Blue Lagoon, ice cave exploration
-                    </div>
-                    <div class="deal-price-row">
-                        <span class="deal-price">$1,199</span>
-                        <span class="deal-was">$2,199</span>
-                    </div>
-                    <ul class="deal-features">
-                        <li>5 nights accommodation</li>
-                        <li>Northern Lights jeep tour</li>
-                        <li>Glacier hiking expedition</li>
-                        <li>Blue Lagoon entry</li>
-                    </ul>
-                    <a href="https://www.viator.com/searchResults/all?destination=Reykjavik&amp;mcid=28353" class="cta-button">View Deal →</a>
-                </div>
-            </article>
+            <div class="deal-card">
+                <div class="deal-location">🎰 Las Vegas</div>
+                <div class="deal-price">$599</div>
+                <a href="https://www.viator.com/Las-Vegas/d684" class="book-btn">View Deal →</a>
+            </div>
+            
+            <div class="deal-card">
+                <div class="deal-location">🗽 New York City</div>
+                <div class="deal-price">$799</div>
+                <a href="https://www.viator.com/New-York-City/d687" class="book-btn">View Deal →</a>
+            </div>
+            
+            <div class="deal-card">
+                <div class="deal-location">🌴 Miami</div>
+                <div class="deal-price">$549</div>
+                <a href="https://www.viator.com/Miami/d660" class="book-btn">View Deal →</a>
+            </div>
         </div>
-    </section>
-    
-    <!-- GOLD TIER -->
-    <section class="tier-section gold" id="gold">
-        <div class="tier-header">
-            <span class="tier-badge">Gold</span>
-            <h2 class="tier-title">Curated Cultural Experiences</h2>
-            <span class="tier-price-range">$700 — $1,000</span>
-        </div>
-        
-        <div class="deals-grid">
-            <article class="deal-card">
-                <div class="deal-image">
-                    🏛️
-                    <span class="tier-tag">Gold</span>
-                </div>
-                <div class="deal-content">
-                    <h3 class="deal-location">Rome History & Food Tour</h3>
-                    <p class="deal-country">Rome, Italy</p>
-                    <div class="deal-experience">
-                        <strong>Includes:</strong> Vatican skip-the-line, pasta-making with nonna, Colosseum sunrise, vespa tour
-                    </div>
-                    <div class="deal-price-row">
-                        <span class="deal-price">$899</span>
-                        <span class="deal-was">$1,599</span>
-                    </div>
-                    <ul class="deal-features">
-                        <li>5 nights central Rome</li>
-                        <li>Skip-the-line Vatican tour</li>
-                        <li>Cooking class included</li>
-                        <li>Evening vespa tour</li>
-                    </ul>
-                    <a href="https://www.viator.com/searchResults/all?destination=Rome&amp;mcid=28353" class="cta-button">View Deal →</a>
-                </div>
-            </article>
-            
-            <article class="deal-card">
-                <div class="deal-image">
-                    🛕
-                    <span class="tier-tag">Gold</span>
-                </div>
-                <div class="deal-content">
-                    <h3 class="deal-location">Bali Temple & Culture</h3>
-                    <p class="deal-country">Bali, Indonesia</p>
-                    <div class="deal-experience">
-                        <strong>Includes:</strong> Sacred monkey forest, cooking class, Mt. Batur sunrise hike, temple purification ceremony
-                    </div>
-                    <div class="deal-price-row">
-                        <span class="deal-price">$899</span>
-                        <span class="deal-was">$1,599</span>
-                    </div>
-                    <ul class="deal-features">
-                        <li>7 nights Ubud villa</li>
-                        <li>Sunrise volcano trek</li>
-                        <li>Traditional cooking class</li>
-                        <li>Temple purification ritual</li>
-                    </ul>
-                    <a href="https://www.viator.com/searchResults/all?destination=Bali&amp;mcid=28353" class="cta-button">View Deal →</a>
-                </div>
-            </article>
-            
-            <article class="deal-card">
-                <div class="deal-image">
-                    🦥
-                    <span class="tier-tag">Gold</span>
-                </div>
-                <div class="deal-content">
-                    <h3 class="deal-location">Costa Rica Wildlife Adventure</h3>
-                    <p class="deal-country">Costa Rica</p>
-                    <div class="deal-experience">
-                        <strong>Includes:</strong> Zip-lining, sloth sanctuary, night jungle walk, volcano hot springs, coffee tour
-                    </div>
-                    <div class="deal-price-row">
-                        <span class="deal-price">$799</span>
-                        <span class="deal-was">$1,499</span>
-                    </div>
-                    <ul class="deal-features">
-                        <li>6 nights eco-lodge</li>
-                        <li>Cloud forest zip-lining</li>
-                        <li>Sloth sanctuary visit</li>
-                        <li>Guided night jungle walk</li>
-                    </ul>
-                    <a href="https://www.viator.com/searchResults/all?destination=Costa%20Rica&amp;mcid=28353" class="cta-button">View Deal →</a>
-                </div>
-            </article>
-            
-            <article class="deal-card">
-                <div class="deal-image">
-                    🏜️
-                    <span class="tier-tag">Gold</span>
-                </div>
-                <div class="deal-content">
-                    <h3 class="deal-location">Morocco Desert & Culture</h3>
-                    <p class="deal-country">Marrakech & Fez, Morocco</p>
-                    <div class="deal-experience">
-                        <strong>Includes:</strong> Sahara camel trek, overnight desert camp, medina food tour, traditional hammam
-                    </div>
-                    <div class="deal-price-row">
-                        <span class="deal-price">$849</span>
-                        <span class="deal-was">$1,599</span>
-                    </div>
-                    <ul class="deal-features">
-                        <li>6 nights riads & desert camp</li>
-                        <li>Sahara overnight camel trek</li>
-                        <li>Fez tannery tour</li>
-                        <li>Traditional hammam spa</li>
-                    </ul>
-                    <a href="https://www.viator.com/searchResults/all?destination=Marrakech&amp;mcid=28353" class="cta-button">View Deal →</a>
-                </div>
-            </article>
-            
-            <article class="deal-card">
-                <div class="deal-image">
-                    🏛️
-                    <span class="tier-tag">Gold</span>
-                </div>
-                <div class="deal-content">
-                    <h3 class="deal-location">Greece Ancient & Islands</h3>
-                    <p class="deal-country">Athens & Santorini, Greece</p>
-                    <div class="deal-experience">
-                        <strong>Includes:</strong> Acropolis archaeologist tour, catamaran sunset cruise, wine tasting, Oia to Fira hike
-                    </div>
-                    <div class="deal-price-row">
-                        <span class="deal-price">$1,099</span>
-                        <span class="deal-was">$1,899</span>
-                    </div>
-                    <ul class="deal-features">
-                        <li>5 nights (Athens + Santorini)</li>
-                        <li>Private Acropolis guide</li>
-                        <li>Sunset catamaran cruise</li>
-                        <li>Volcanic vineyard tour</li>
-                    </ul>
-                    <a href="https://www.viator.com/searchResults/all?destination=Athens&amp;mcid=28353" class="cta-button">View Deal →</a>
-                </div>
-            </article>
-        </div>
-    </section>
-    
-    <!-- SILVER TIER -->
-    <section class="tier-section silver" id="silver">
-        <div class="tier-header">
-            <span class="tier-badge">Silver</span>
-            <h2 class="tier-title">Adventure Steals</h2>
-            <span class="tier-price-range">$500 — $900</span>
-        </div>
-        
-        <div class="deals-grid">
-            <article class="deal-card">
-                <div class="deal-image">
-                    🐢
-                    <span class="tier-tag">Silver</span>
-                </div>
-                <div class="deal-content">
-                    <h3 class="deal-location">Cancun Ruins & Cenotes</h3>
-                    <p class="deal-country">Cancun, Mexico</p>
-                    <div class="deal-experience">
-                        <strong>Includes:</strong> Chichen Itza sunrise tour, cenote swimming, sea turtle snorkeling, cooking class
-                    </div>
-                    <div class="deal-price-row">
-                        <span class="deal-price">$699</span>
-                        <span class="deal-was">$1,299</span>
-                    </div>
-                    <ul class="deal-features">
-                        <li>5 nights hotel</li>
-                        <li>Chichen Itza guided tour</li>
-                        <li>Cenote swim experience</li>
-                        <li>Snorkeling with turtles</li>
-                    </ul>
-                    <a href="https://www.viator.com/searchResults/all?destination=Cancun&amp;mcid=28353" class="cta-button">View Deal →</a>
-                </div>
-            </article>
-            
-            <article class="deal-card">
-                <div class="deal-image">
-                    🐘
-                    <span class="tier-tag">Silver</span>
-                </div>
-                <div class="deal-content">
-                    <h3 class="deal-location">Thailand Temples & Food</h3>
-                    <p class="deal-country">Bangkok & Chiang Mai, Thailand</p>
-                    <div class="deal-experience">
-                        <strong>Includes:</strong> Floating market boat tour, elephant sanctuary volunteer, cooking class, temple tuk-tuk tour
-                    </div>
-                    <div class="deal-price-row">
-                        <span class="deal-price">$749</span>
-                        <span class="deal-was">$1,399</span>
-                    </div>
-                    <ul class="deal-features">
-                        <li>6 nights accommodation</li>
-                        <li>Elephant sanctuary visit</li>
-                        <li>Floating market tour</li>
-                        <li>Organic farm cooking class</li>
-                    </ul>
-                    <a href="https://www.viator.com/searchResults/all?destination=Bangkok&amp;mcid=28353" class="cta-button">View Deal →</a>
-                </div>
-            </article>
-        </div>
-    </section>
-    
-    <footer class="footer">
-        <p>Experience deals from Viator. We earn commission on bookings at no extra cost to you. Prices subject to change.</p>
-        <p style="margin-top: 1rem; font-size: 0.8rem;">© 2026 Experience Steals</p>
-    </footer>
+    </div>
 </body>
 </html>
