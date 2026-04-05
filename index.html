@@ -143,8 +143,6 @@
             text-decoration: none;
             font-weight: 700;
             margin-top: 1rem;
-            border: none;
-            cursor: pointer;
         }
         
         .book-btn:hover {
@@ -165,42 +163,6 @@
         .tier-platinum { background: linear-gradient(135deg, #e0e0e0 0%, #b9f2ff 50%, #c0c0c0 100%); color: #1a1a1a; }
         .tier-silver { background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%); color: #1a1a1a; }
         
-        .search-box {
-            background: rgba(255,255,255,0.05);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-        }
-        
-        .search-box input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            background: var(--bg-dark);
-            color: white;
-            font-size: 1rem;
-        }
-        
-        .search-box button {
-            width: 100%;
-            margin-top: 0.5rem;
-            padding: 0.75rem;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-        
-        .note {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-            text-align: center;
-        }
-        
         .footer {
             background: var(--bg-card);
             border-top: 1px solid var(--border);
@@ -208,6 +170,13 @@
             padding: 3rem 2rem;
             margin-top: 4rem;
             color: var(--text-secondary);
+        }
+        
+        .viator-note {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            text-align: center;
         }
     </style>
 </head>
@@ -239,14 +208,8 @@
                         <span class="deal-price">$899</span>
                         <span class="deal-was">$1599</span>
                     </div>
-                    <div class="search-box">
-                        <form action="https://www.viator.com/search-results" method="GET" target="_blank">
-                            <input type="hidden" name="pid" value="28353">
-                            <input type="hidden" name="text" value="Hawaii">
-                            <button type="submit">Search Hawaii Deals →</button>
-                        </form>
-                    </div>
-                    <p class="note">Partner ID 28353 tracked automatically</p>
+                    <a href="https://www.partner.viator.com/widgets/deeplink?partnerId=28353&text=Hawaii" class="book-btn" target="_blank">Search Hawaii Deals →</a>
+                    <p class="viator-note">Partner ID 28353 tracked</p>
                 </div>
             </div>
             
@@ -263,14 +226,8 @@
                         <span class="deal-price">$1299</span>
                         <span class="deal-was">$2399</span>
                     </div>
-                    <div class="search-box">
-                        <form action="https://www.viator.com/search-results" method="GET" target="_blank">
-                            <input type="hidden" name="pid" value="28353">
-                            <input type="hidden" name="text" value="Aspen">
-                            <button type="submit">Search Aspen Deals →</button>
-                        </form>
-                    </div>
-                    <p class="note">Partner ID 28353 tracked automatically</p>
+                    <a href="https://www.partner.viator.com/widgets/deeplink?partnerId=28353&text=Aspen" class="book-btn" target="_blank">Search Aspen Deals →</a>
+                    <p class="viator-note">Partner ID 28353 tracked</p>
                 </div>
             </div>
             
@@ -287,14 +244,8 @@
                         <span class="deal-price">$499</span>
                         <span class="deal-was">$899</span>
                     </div>
-                    <div class="search-box">
-                        <form action="https://www.viator.com/search-results" method="GET" target="_blank">
-                            <input type="hidden" name="pid" value="28353">
-                            <input type="hidden" name="text" value="Nashville">
-                            <button type="submit">Search Nashville Deals →</button>
-                        </form>
-                    </div>
-                    <p class="note">Partner ID 28353 tracked automatically</p>
+                    <a href="https://www.partner.viator.com/widgets/deeplink?partnerId=28353&text=Nashville" class="book-btn" target="_blank">Search Nashville Deals →</a>
+                    <p class="viator-note">Partner ID 28353 tracked</p>
                 </div>
             </div>
         </div>
