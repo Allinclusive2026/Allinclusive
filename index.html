@@ -101,17 +101,36 @@
         .deal-card {
             background: var(--bg-card);
             border-radius: 16px;
-            padding: 1.5rem;
+            overflow: hidden;
             border: 1px solid var(--border);
+            transition: transform 0.3s, border-color 0.3s;
         }
         
         .deal-card:hover {
+            transform: translateY(-4px);
             border-color: var(--accent);
         }
+        
+        .deal-video {
+            width: 100%;
+            aspect-ratio: 9/16;
+            max-height: 400px;
+            object-fit: cover;
+            background: var(--bg-hover);
+        }
+        
+        .deal-content { padding: 1.5rem; }
         
         .deal-location {
             font-size: 1.5rem;
             font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        
+        .deal-country {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
         }
         
         .deal-price {
@@ -120,8 +139,15 @@
             color: var(--success);
         }
         
+        .deal-was {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+            margin-left: 0.5rem;
+        }
+        
         .book-btn {
             display: block;
+            width: 100%;
             background: var(--accent);
             color: white;
             padding: 1rem;
@@ -130,6 +156,29 @@
             text-decoration: none;
             font-weight: 700;
             margin-top: 1rem;
+        }
+        
+        .tier-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tier-gold { background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); color: #1a1a1a; }
+        .tier-platinum { background: linear-gradient(135deg, #e0e0e0 0%, #b9f2ff 50%, #c0c0c0 100%); color: #1a1a1a; }
+        .tier-silver { background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%); color: #1a1a1a; }
+        
+        .footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            color: var(--text-secondary);
         }
     </style>
 </head>
@@ -148,42 +197,62 @@
     
     <div id="deals" class="deals-container">
         <div class="deals-grid">
+            <!-- Hawaii -->
             <div class="deal-card">
-                <div class="deal-location">🌺 Hawaii</div>
-                <div class="deal-price">$899</div>
-                <a href="https://www.viator.com/Hawaii/d230" class="book-btn">View Deal →</a>
+                <video class="deal-video" autoplay muted loop playsinline poster="🌺">
+                    <source src="https://pfst.cf2.poecdn.net/base/video/b7e7231d44878a6c975ecad990268784e57bf27300c9ce5870dec53b8a8aac3b" type="video/mp4">
+                </video>
+                <div class="deal-content">
+                    <span class="tier-badge tier-gold">Gold</span>
+                    <div class="deal-location">🌺 Hawaii</div>
+                    <div class="deal-country">Island Paradise Adventure</div>
+                    <div>
+                        <span class="deal-price">$899</span>
+                        <span class="deal-was">$1599</span>
+                    </div>
+                    <a href="https://www.viator.com/Hawaii/d230" class="book-btn">View Deal →</a>
+                </div>
             </div>
             
+            <!-- Aspen -->
             <div class="deal-card">
-                <div class="deal-location">🏔️ Aspen</div>
-                <div class="deal-price">$1299</div>
-                <a href="https://www.viator.com/Aspen/d48938" class="book-btn">View Deal →</a>
+                <video class="deal-video" autoplay muted loop playsinline poster="🏔️">
+                    <source src="https://pfst.cf2.poecdn.net/base/video/44ebcd733778c40b88084544fbe2b52e95c32f021a880e49cb5c9e0b78f36cc4" type="video/mp4">
+                </video>
+                <div class="deal-content">
+                    <span class="tier-badge tier-platinum">Platinum</span>
+                    <div class="deal-location">🏔️ Aspen</div>
+                    <div class="deal-country">Luxury Ski & Mountain Adventure</div>
+                    <div>
+                        <span class="deal-price">$1299</span>
+                        <span class="deal-was">$2399</span>
+                    </div>
+                    <a href="https://www.viator.com/Aspen/d48938" class="book-btn">View Deal →</a>
+                </div>
             </div>
             
+            <!-- Nashville -->
             <div class="deal-card">
-                <div class="deal-location">🎸 Nashville</div>
-                <div class="deal-price">$499</div>
-                <a href="https://www.viator.com/Nashville/d4961" class="book-btn">View Deal →</a>
-            </div>
-            
-            <div class="deal-card">
-                <div class="deal-location">🎰 Las Vegas</div>
-                <div class="deal-price">$599</div>
-                <a href="https://www.viator.com/Las-Vegas/d684" class="book-btn">View Deal →</a>
-            </div>
-            
-            <div class="deal-card">
-                <div class="deal-location">🗽 New York City</div>
-                <div class="deal-price">$799</div>
-                <a href="https://www.viator.com/New-York-City/d687" class="book-btn">View Deal →</a>
-            </div>
-            
-            <div class="deal-card">
-                <div class="deal-location">🌴 Miami</div>
-                <div class="deal-price">$549</div>
-                <a href="https://www.viator.com/Miami/d660" class="book-btn">View Deal →</a>
+                <video class="deal-video" autoplay muted loop playsinline poster="🎸">
+                    <source src="https://pfst.cf2.poecdn.net/base/video/f2794d9beff1d5918e5abd4929844b9eb9b622bd503a6b911a18da3e74a16434" type="video/mp4">
+                </video>
+                <div class="deal-content">
+                    <span class="tier-badge tier-silver">Silver</span>
+                    <div class="deal-location">🎸 Nashville</div>
+                    <div class="deal-country">Music City Experience</div>
+                    <div>
+                        <span class="deal-price">$499</span>
+                        <span class="deal-was">$899</span>
+                    </div>
+                    <a href="https://www.viator.com/Nashville/d4961" class="book-btn">View Deal →</a>
+                </div>
             </div>
         </div>
     </div>
+    
+    <footer class="footer">
+        <p>Experience deals from Viator. We earn commission on bookings at no extra cost to you.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">© 2026 Experience Steals | Partner ID: 28353</p>
+    </footer>
 </body>
 </html>
